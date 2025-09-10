@@ -1,0 +1,18 @@
+<div *ngIf="loading" class="alert alert-info">Cargando dentista...</div>
+<div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+<ng-container *ngIf="(dentista$ | async) as dentista">
+    <div class="card p-3">
+        <h3>{{ dentista.nombre }} {{ dentista.apellido }}</h3>
+        <p><strong>Correo Electrónico: </strong>{{ dentista.email }}</p>
+        <p><strong>Especialidad: </strong>{{ dentista.especialidad }}</p>
+        <p><strong>Fecha de Registro: </strong>{{ dentista.fechaRegistro| date:'dd/MM/yyyy' }}</p>
+        <p><strong>Teléfono: </strong>{{ dentista.telefono }}</p>
+        <p><strong>Rol: </strong>{{ dentista.role }}</p>
+
+        <div class="mt-3">
+            <button class="btn btn-secondary" routerLink="/dentistas">Volver</button>
+            <button class="btn btn-warning ml-2" [routerLink]="['/dentistas/editar', dentista.id]">Editar</button>
+        </div>
+    </div>
+</ng-container>

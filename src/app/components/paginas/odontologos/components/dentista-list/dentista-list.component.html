@@ -1,0 +1,36 @@
+<div class="container mt-4">
+    <h2>Listado de Dentistas</h2>
+
+    <button class="btn btn-success" [routerLink]="['/dentistas/nuevo']">
+        + Nuevo Dentista
+    </button>
+
+    <table class="table table-bordered table-striped mt-3">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Especialidad</th>
+                <th>Teléfono</th>
+                <th>Email</th>
+                <th>Fecha de Registro</th>
+                <th>Acciones</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let dentista of dentistas; trackBy: trackByDentista">
+                <td>{{ dentista.nombre }}</td>
+                <td>{{ dentista.apellido }}</td>
+                <td>{{ dentista.especialidad }}</td>
+                <td>{{ dentista.telefono }}</td>
+                <td>{{ dentista.email }}</td>
+                <td>{{ dentista.fechaRegistro | date: 'dd/MM/yyyy' }}</td>
+                <td>
+                    <button class="btn btn-sm btn-primary" [routerLink]="['/dentistas',dentista.id]">Ver</button>
+                    <button class="btn btn-sm btn-warning ml-1" [routerLink]="['/dentistas/editar',dentista.id]">Editar</button>
+                    <button class="btn btn-sm btn-danger ml-1" (click)="eliminarDentista(dentista.id)">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+</div>

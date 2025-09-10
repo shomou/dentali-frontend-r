@@ -1,0 +1,91 @@
+<div class="container-fluid">
+    <h1 class="mt-4">Bienvenido</h1>
+    <p class="text-muted">Resumen general de la actividad del consultorio</p>
+
+    <!-- Tarjeta de Resumen -->
+    <div class="row">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Citas de Hoy</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">8</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="bi bi-calendar-day fs-2 text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-10 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Pacientes Nuevos (Mes)</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">15</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="bi bi-person-plus fs-2 text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-1">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tratamientos Pendientes</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800">5</div>
+                        </div>
+                        <div class="col-auto">
+                          <i class="bi bi-clipboard-pulse fs-2 text-gray-300"></i>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+    <!-- Tabla de Próximas Citas -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Próximas Citas</h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th>Paciente</th>
+              <th>Fecha y Hora</th>
+              <th>Tratamiento</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Carlos Ramirez</td>
+              <td>25/07/2024 10:00 AM</td>
+              <td>Limpieza Dental</td>
+              <td><span class="badge text-bg-success">Confirmada</span></td>
+            </tr>
+            <tr>
+              <td>Ana Torres</td>
+              <td>25/07/2024 11:30 AM</td>
+              <td>Revisión</td>
+              <td><span class="badge text-bg-warning">Pendiente</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
+</div>

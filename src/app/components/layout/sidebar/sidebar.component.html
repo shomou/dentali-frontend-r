@@ -1,0 +1,51 @@
+<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark sidebar-container">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+        <i class="bi bi-heart-pulse-fill me-2"></i>
+        <span class="fs-4">Dentali</span>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+            <a routerLink="/dashboard"  routerLinkActive="active" class="nav-link text-white">
+                <i class="bi bi-speedometer2"></i>
+                Dashboard
+            </a>
+        </li>
+        <li class="nav-item">
+            <a routerLink="/pacientes" routerLinkActive="active" class="nav-link text-white">
+                <i class="bi bi-people-fill me-2"></i>
+                Pacientes
+            </a>
+        </li>
+        <li>
+            <a routerLink="/citas"  routerLinkActive="active" class="nav-link text-white">
+                <i class="bi bi-calendar-check-fill me-2"></i>
+                Citas
+            </a>
+        </li>
+        <li>
+            <a routerLink="/dentistas" routerLinkActive="active" class="nav-link text-white">
+                <i class="bi bi-people-fill me-2"></i>
+                Odontólogos
+            </a>
+        </li>
+        <li>
+            <a routerLink="/tratamientos" routerLinkActive="active" class="nav-link text-white">
+                <i class="bi bi-clipboard2-pulse"></i> 
+                Tratamientos
+            </a>
+        </li>
+    </ul>
+    <hr>
+    <div class="btn-group dropup">
+        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <strong>Dra. Ibeth Santos</strong>
+        </button>
+        <div class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Mi Perfil</a></li>
+            <li><a class="dropdown-item" href="#">Configuración</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" (click)="cerrarSession()" style="cursor:pointer">Cerrar Sesión</a></li>
+        </div>
+    </div>
+</div>

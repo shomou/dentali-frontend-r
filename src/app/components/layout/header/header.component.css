@@ -1,0 +1,10 @@
+:host {
+  width: 100%;
+}
+
+
+.search-form {
+  float: right; 
+  margin-left: auto; /* Espacio a la izquierda */
+}
+

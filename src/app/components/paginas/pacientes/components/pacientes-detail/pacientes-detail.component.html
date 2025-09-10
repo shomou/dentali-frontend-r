@@ -1,0 +1,16 @@
+<div *ngIf="loading" class="alert alert-info">Cargando paciente...</div>
+<div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+<ng-container *ngIf="(paciente$ | async) as paciente">
+    <div class="card p-3">
+        <h3>{{ paciente.nombre }} {{ paciente.apellido }}</h3>
+        <p><strong>Correo:</strong>{{ paciente.email }}</p>
+        <p><strong>Fecha de Nacimiento:</strong>{{ paciente.fechaNacimiento | date:'dd/MM/yyyy' }}</p>
+        <p><strong>Género:</strong>{{ paciente.genero }}</p>
+
+        <div class="mt-3">
+            <button class="btn btn-secondary" routerLink="/pacientes">Volver</button>
+            <button class="btn btn-warning ml-2" [routerLink]="['/pacientes/editar', paciente.id]">Editar</button>
+        </div>
+    </div>
+</ng-container>

@@ -1,0 +1,15 @@
+.card .border-left-primary {
+  border-left: .25rem solid #4e73df !important;
+}
+
+.card .border-left-success {
+  border-left: .25rem solid #1cc88a !important;
+}
+
+.card .border-left-info {
+  border-left: .25rem solid #36b9cc !important;
+}
+
+.text-gray-300 {
+  color: #dddfeb !important;
+}

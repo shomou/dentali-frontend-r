@@ -1,0 +1,19 @@
+.main-layout-container {
+    display: flex;
+    height: 100vh;
+    background-color: #f4f7f6;
+  }
+  
+  .main-content-area {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+  
+  .content {
+    flex-grow: 1;
+    padding: 2rem;
+  }
+
+  
