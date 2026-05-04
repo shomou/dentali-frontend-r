@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-  
+
     <!-- Botón para colapsar sidebar en móviles (funcionalidad futura) -->
     <!-- <button class="btn btn-primary d-md-none me-3" type="button">
       <i class="bi bi-list"></i>
@@ -12,5 +12,16 @@
         <i class="bi bi-search"></i>
       </button>
     </form>
+
+    <!-- Menú de Usuario -->
+    <div class="user-menu" *ngIf="currentUser$ | async as user">
+      <div class="user-info">
+        <span class="user-name">{{ user.name }}</span>
+        <small class="user-email">{{ user.email }}</small>
+      </div>
+      <button class="btn btn-outline-danger btn-sm" (click)="logout()" title="Cerrar sesión">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </button>
+    </div>
 
 </nav>

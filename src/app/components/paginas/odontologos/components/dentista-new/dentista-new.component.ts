@@ -20,6 +20,9 @@ export class DentistaNewComponent implements OnInit{
   ){}
 
   ngOnInit(): void{
+    // Obtenemos la fecha actual en formato YYYY-MM-DD
+    const hoy = new Date().toISOString().split('T')[0];
+
     this.dentistaForm = this.fb.group({
       nombre:['',[Validators.required, Validators.minLength(2)]],
       apellido:['',[Validators.required, Validators.minLength(2)]],
@@ -27,7 +30,7 @@ export class DentistaNewComponent implements OnInit{
       telefono:['',[Validators.required]],
       email:['',[Validators.required]],
       password:['',[Validators.required, Validators.minLength(7)]],
-      fechaRegistro:['',[Validators.required]],
+      fechaRegistro: [{ value: hoy, disabled: true }, [Validators.required]],
       role:['',[Validators.required]]
     });
   }
@@ -43,16 +46,33 @@ export class DentistaNewComponent implements OnInit{
       return;
     }
 
-    console.log(this.dentistaForm);
+    const rawValues = this.dentistaForm.getRawValue();
+    console.log('Valores del formulario:', rawValues);
+
+    // Mapeo robusto: Transformamos el 'role' del formulario al array 'roles' del backend
+    let roleKey = rawValues.role;
+    let finalRoles: string[] = [];
+
+    // Verificamos si es Usuario o Administrador
+    if (roleKey === 'USER_ROLE' || roleKey === 'ROLE_USER') finalRoles = ['ROLE_USER'];
+    else if (roleKey === 'ADMIN_ROLE' || roleKey === 'ROLE_ADMIN') finalRoles = ['ROLE_ADMIN'];
+
+    const dentistaParaGuardar = {
+      ...rawValues,
+      roles: finalRoles
+    };
+
+    // Eliminamos el campo 'role' individual para enviar solo el array 'roles'
+    delete dentistaParaGuardar.role;
 
     // Mandamos el objeto al servicio
-    // this.dentistasService.agregarDentista(this.dentistaForm.value).subscribe({
-    //   next: () =>{
-    //     this.router.navigate(['/dentistas']);
-    //   },
-    //   error: (err: any) => {
-    //     console.error('Error al guardar dentista');
-    //   }
-    // });
+    this.dentistasService.agregarDentista(dentistaParaGuardar).subscribe({
+       next: () =>{
+         this.router.navigate(['/dentistas']);
+      },
+      error: (err: any) => {
+        console.error('Error al guardar dentista');
+      }
+    });
   }
 }

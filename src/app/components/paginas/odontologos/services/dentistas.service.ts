@@ -1,63 +1,35 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Dentista } from '../models/dentista.model';
+import { environment } from '../../../../../environment/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DentistasService {
-  private dentistas: Dentista[] = [
-    {
-      id: 1,
-      nombre: 'Carlos',
-      apellido: 'Ruiz',
-      especialidad: 'Ortodoncia',
-      telefono: '1234567890',
-      email: 'carlos.ruiz@example.com',
-      password:'',
-      fechaRegistro: '2023-01-15',
-      role: 'USER_ROLE'
-    },
-    {
-      id: 2,
-      nombre: 'Laura',
-      apellido: 'Fernández',
-      especialidad: 'Endodoncia',
-      telefono: '0987654321',
-      email: 'laura.fernandez@example.com',
-      password:'',
-      fechaRegistro: '2023-02-20',
-      role: 'ADMIN_ROLE'
-    }
-  ];
+  private apiUrlDentistas = `${environment.apiUrl}/odontologos`;
+
+  constructor(private http: HttpClient) {}
 
   obtenerDentistas(): Observable<Dentista[]> {
-    return of(this.dentistas)
+    const endpoint  = '/list';
+    return this.http.get<Dentista[]>(this.apiUrlDentistas+endpoint);
   }
 
-  agregarDentista(dentista: Dentista): Observable<Dentista[]>{
-    dentista.id = this.dentistas.length + 1;
-    this.dentistas.push(dentista);
-    return of(this.dentistas);
+  agregarDentista(dentista: Dentista): Observable<Dentista> {
+    return this.http.post<Dentista>(this.apiUrlDentistas, dentista);
   }
 
-  obtenerDentistaPorId(id: number): Observable<Dentista | undefined>{
-    const dentista = this.dentistas.find(d => d.id === id);
-    return of(dentista);
+  obtenerDentistaPorId(id: number): Observable<Dentista> {
+    return this.http.get<Dentista>(`${this.apiUrlDentistas}/${id}`);
   }
 
-  actualizarDentista(id: number, dentistaActualizado: Dentista): Observable<Dentista | null>{
-    const index = this.dentistas.findIndex(d => d.id === id);
-    if(index !== -1){
-      this.dentistas[index] = {...this.dentistas[index], ...dentistaActualizado};
-      return of(this.dentistas[index]);
-    }else{
-      return of(null);
-    }
+  actualizarDentista(id: number, dentistaActualizado: Dentista): Observable<Dentista> {
+    return this.http.put<Dentista>(`${this.apiUrlDentistas}/${id}`, dentistaActualizado);
   }
 
-  eliminarDentista(id: number): Observable<Dentista[]>{
-    this.dentistas = this.dentistas.filter(d => d.id !== id);
-    return of([...this.dentistas]);
+  eliminarDentista(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrlDentistas}/${id}`);
   }
 }

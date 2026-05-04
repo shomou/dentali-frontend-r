@@ -2,9 +2,55 @@
   width: 100%;
 }
 
-
 .search-form {
-  float: right; 
+  float: right;
   margin-left: auto; /* Espacio a la izquierda */
+}
+
+/* Menú de Usuario */
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-left: auto;
+  padding: 10px 20px;
+  border-left: 1px solid #e9ecef;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.user-name {
+  font-weight: 600;
+  color: #2d3748;
+  display: block;
+  font-size: 14px;
+}
+
+.user-email {
+  color: #718096;
+  font-size: 12px;
+  display: block;
+}
+
+.user-menu .btn {
+  padding: 6px 12px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .user-menu {
+    gap: 10px;
+    padding: 8px 10px;
+  }
+
+  .user-info {
+    display: none;
+  }
 }
 

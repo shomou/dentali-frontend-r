@@ -43,16 +43,8 @@
         </div>
 
         <div class="form-group">
-            <label>Contraseña</label>
-            <input type="password" class="form-control" formControlName="password">
-            <div *ngIf="f['password'].invalid && (f['password'].dirty || esEdicion)" class="text-danger">
-                Contraseña es requerido y debe tener al menos 7 caracteres.
-            </div>
-        </div>
-
-        <div class="form-group">
             <label>Fecha de Registro</label>
-            <input type="date" class="form-control" formControlName="fechaRegistro">
+            <input type="text" class="form-control" formControlName="fechaRegistro">
             <div *ngIf="f['fechaRegistro'].invalid && (f['fechaRegistro'].dirty || esEdicion)" class="text-danger">
                 Fecha de Registro es requerida
             </div>
@@ -67,7 +59,7 @@
             </select>
             <div *ngIf="f['role'].invalid && (f['role'].dirty || esEdicion)" class="text-danger">
                 Rol es requerido.
-            </div>            
+            </div>
         </div>
 
         <button type="submit" class="btn btn-success mt-2">Guardar</button>
@@ -76,5 +68,5 @@
         </button>
     </form>
 
-    
+
 </div>

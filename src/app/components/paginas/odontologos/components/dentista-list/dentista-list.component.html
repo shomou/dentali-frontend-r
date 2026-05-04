@@ -13,7 +13,6 @@
                 <th>Especialidad</th>
                 <th>Teléfono</th>
                 <th>Email</th>
-                <th>Fecha de Registro</th>
                 <th>Acciones</th>
         </thead>
         <tbody>
@@ -23,7 +22,6 @@
                 <td>{{ dentista.especialidad }}</td>
                 <td>{{ dentista.telefono }}</td>
                 <td>{{ dentista.email }}</td>
-                <td>{{ dentista.fechaRegistro | date: 'dd/MM/yyyy' }}</td>
                 <td>
                     <button class="btn btn-sm btn-primary" [routerLink]="['/dentistas',dentista.id]">Ver</button>
                     <button class="btn btn-sm btn-warning ml-1" [routerLink]="['/dentistas/editar',dentista.id]">Editar</button>
@@ -32,5 +30,5 @@
             </tr>
         </tbody>
     </table>
-    
+
 </div>

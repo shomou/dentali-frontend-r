@@ -1,27 +1,54 @@
-# DentaliFrontend
+# Dentali - Sistema de Gestión Odontológica
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.17.
+## 🦷 Descripción
+Dentali es una plataforma web avanzada desarrollada con **Angular** para la gestión integral de clínicas dentales. El sistema se enfoca en la eficiencia operativa y el manejo seguro de la información de profesionales y pacientes.
 
-## Development server
+## 🚀 Funcionalidades Implementadas
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### 👨‍⚕️ Gestión de Odontólogos (Módulo CRUD)
+Se ha desarrollado un ecosistema completo para la administración de profesionales:
 
-## Code scaffolding
+- **Alta de Dentistas (`dentista-new`)**: 
+  - Registro con validación en tiempo real.
+  - **Fecha de Registro Protegida**: Campo de solo lectura que asigna automáticamente la fecha actual.
+  - **Seguridad**: Validación estricta de contraseñas (mínimo 7 caracteres).
+- **Edición Dinámica (`dentista-edit`)**: 
+  - Carga de datos con `patchValue`.
+  - **Manejo de Roles**: Selector que traduce valores técnicos (`ROLE_USER`) a etiquetas amigables ("Usuario") y permite la edición fluida de permisos.
+  - **Persistencia Robusta**: Transformación de datos en el envío para asegurar compatibilidad con la estructura de arrays de roles del Backend.
+  - **Contraseña Opcional**: Flexibilidad para actualizar perfiles sin necesidad de reingresar credenciales si no se desea cambiarlas.
+- **Detalle del Profesional (`dentista-detail`)**:
+  - Vista optimizada con Observables (`async pipe`).
+  - Formateo de fechas localizado a `DD/MM/YYYY` usando lógica UTC para evitar desfases de zona horaria.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### 🔐 Autenticación y Seguridad
+- **Sistema JWT**: Autenticación basada en tokens para sesiones seguras.
+- **Auth Guards**: Protección de rutas internas para evitar accesos no autorizados.
+- **Interceptores HTTP**: Inyección automática del token de autorización en cada petición al servidor.
+- **Manejo de Sesión**: Logout automático y detección de tokens expirados (errores 401).
 
-## Build
+### 🛠️ Características Técnicas
+- **Formularios Reactivos**: Uso de `FormBuilder` para validaciones complejas y estados de control (`disabled`, `invalid`).
+- **Mapeo de Modelos**: Lógica de conversión de datos para sincronizar el campo `role` del frontend con el array `roles` del backend.
+- **UX/UI**: Uso de estados de carga (`loading`), manejo de errores y navegación fluida entre módulos.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 📂 Estructura del Proyecto (Módulo Odontólogos)
 
-## Running unit tests
+```bash
+src/app/components/paginas/odontologos/
+├── components/
+│   ├── dentista-new/    # Lógica de creación y validación inicial
+│   ├── dentista-edit/   # Lógica de actualización y mapeo de datos
+│   └── dentista-detail/ # Visualización de datos y pipes de formato
+├── models/              # Interfaces de datos (Dentista)
+└── services/            # Comunicación centralizada con la API REST
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 🔧 Configuración y Uso
 
-## Running end-to-end tests
+1. **Instalación**: `npm install`
+2. **Desarrollo**: `ng serve` para levantar el servidor local en `http://localhost:4200`.
+3. **Autenticación**: Asegúrese de configurar la URL del backend en los servicios de autenticación antes de iniciar.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+---
+*Sistema desarrollado con un enfoque en la calidad de código, mantenibilidad y seguridad de datos.*

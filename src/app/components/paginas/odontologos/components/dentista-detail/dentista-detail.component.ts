@@ -28,14 +28,26 @@ export class DentistaDetailComponent implements OnInit{
         this.loading = true;
         this.error = '';
         return this.dentistasService.obtenerDentistaPorId(id).pipe(
-          map(p => p ?? null), // si undefined → null
+          map(dentista => {
+            if (!dentista) return null;
+
+            // Procesamos el array de roles para obtener una descripción amigable
+            const roles = (dentista as any).roles;
+            (dentista as any).rolDescripcion = (roles && roles.length > 0)
+              ? (roles[0] === 'ROLE_USER' ? 'Usuario' : 'Administrador')
+              : 'Sin rol';
+
+            return dentista;
+          }),
           catchError(err => {
-            this.error = 'Error al cargar paciente';
+            this.error = 'Error al cargar el odontólogo';
             return of(null);
           }),
           finalize(() => (this.loading = false))
         );
       })
     );
+
+
   }
 }

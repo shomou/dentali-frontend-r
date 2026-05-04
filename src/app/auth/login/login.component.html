@@ -1,0 +1,127 @@
+<div class="login-container">
+  <div class="login-card">
+    <!-- Logo/Header -->
+    <div class="login-header">
+      <div class="logo">
+        <i class="fas fa-tooth"></i>
+      </div>
+      <h1>Dentali</h1>
+      <p>Sistema de Gestión Dental</p>
+    </div>
+
+    <!-- Formulario de Login -->
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+      <!-- Mensaje de Error -->
+      <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="fas fa-exclamation-circle"></i>
+        {{ error }}
+        <button type="button" class="close" (click)="error = ''" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email" class="form-label">Correo Electrónico</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="fas fa-envelope"></i>
+            </span>
+          </div>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            formControlName="email"
+            placeholder="tu@email.com"
+            [class.is-invalid]="submitted && f['email'].errors"
+          />
+        </div>
+        <div *ngIf="submitted && f['email'].errors" class="invalid-feedback d-block">
+          <small *ngIf="f['email'].errors['required']">
+            <i class="fas fa-times-circle"></i> El email es requerido
+          </small>
+          <small *ngIf="f['email'].errors['email']">
+            <i class="fas fa-times-circle"></i> Ingresa un email válido
+          </small>
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password" class="form-label">Contraseña</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="fas fa-lock"></i>
+            </span>
+          </div>
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            class="form-control"
+            id="password"
+            formControlName="password"
+            placeholder="Ingresa tu contraseña"
+            [class.is-invalid]="submitted && f['password'].errors"
+          />
+          <div class="input-group-append">
+            <button
+              type="button"
+              class="btn btn-outline-secondary"
+              (click)="togglePasswordVisibility()"
+              tabindex="-1"
+            >
+              <i [class]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+            </button>
+          </div>
+        </div>
+        <div *ngIf="submitted && f['password'].errors" class="invalid-feedback d-block">
+          <small *ngIf="f['password'].errors['required']">
+            <i class="fas fa-times-circle"></i> La contraseña es requerida
+          </small>
+          <small *ngIf="f['password'].errors['minlength']">
+            <i class="fas fa-times-circle"></i> Mínimo 6 caracteres
+          </small>
+        </div>
+      </div>
+
+      <!-- Remember Me & Forgot Password -->
+      <div class="form-check mb-3">
+        <input type="checkbox" class="form-check-input" id="rememberMe" />
+        <label class="form-check-label" for="rememberMe">
+          Recuérdame
+        </label>
+        <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+      </div>
+
+      <!-- Botón de Login -->
+      <button
+        type="submit"
+        class="btn btn-primary btn-login"
+        [disabled]="loading"
+      >
+        <span *ngIf="!loading">
+          <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+        </span>
+        <span *ngIf="loading">
+          <span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>
+          Iniciando...
+        </span>
+      </button>
+
+      <!-- Registro -->
+      <div class="text-center mt-3">
+        <small>
+          ¿No tienes cuenta?
+          <a href="/register" class="register-link">Crear una nueva cuenta</a>
+        </small>
+      </div>
+    </form>
+
+    <!-- Footer -->
+    <div class="login-footer">
+      <small>&copy; 2026 Dentali. Todos los derechos reservados.</small>
+    </div>
+  </div>
+</div>
