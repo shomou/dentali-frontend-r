@@ -21,7 +21,21 @@ Se ha desarrollado un ecosistema completo para la administración de profesional
   - Vista optimizada con Observables (`async pipe`).
   - Formateo de fechas localizado a `DD/MM/YYYY` usando lógica UTC para evitar desfases de zona horaria.
 
-### 🔐 Autenticación y Seguridad
+### 🗓️ Gestión de Citas (Módulo CRUD)
+Se ha iniciado la implementación de un sistema robusto para la gestión de citas:
+
+- **Creación de Citas (`citas-new`)**:
+  - Formulario reactivo para agendar nuevas citas.
+  - Selección dinámica de pacientes y odontólogos existentes.
+  - Validaciones básicas de campos (fecha, hora, motivo).
+  - Estado inicial de la cita como "PENDIENTE".
+- **Listado de Citas (`citas-list`)**:
+  - Visualización de todas las citas programadas en una tabla.
+  - Muestra información clave como paciente, odontólogo, fecha, hora y estado.
+  - Acciones rápidas para ver detalles, editar o eliminar citas.
+  - Indicadores visuales para el estado de la cita (Pendiente, Confirmada, Cancelada).
+
+### � Autenticación y Seguridad
 - **Sistema JWT**: Autenticación basada en tokens para sesiones seguras.
 - **Auth Guards**: Protección de rutas internas para evitar accesos no autorizados.
 - **Interceptores HTTP**: Inyección automática del token de autorización en cada petición al servidor.
