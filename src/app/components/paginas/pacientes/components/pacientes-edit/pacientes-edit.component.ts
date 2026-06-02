@@ -29,7 +29,12 @@ export class PacientesEditComponent implements OnInit{
       apellido: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       fechaNacimiento: ['', Validators.required],
-      genero: ['', Validators.required]
+      genero: ['', [Validators.required]],
+      estado: ['', [Validators.required]],
+      telefono:['',[Validators.required]],
+      direccion:['',[Validators.required]],
+      identificacion:['',[Validators.required]],
+      curp:['',[Validators.required]],
     });
 
     // Verificamos si hay id en la ruta

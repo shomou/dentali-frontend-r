@@ -1,0 +1,80 @@
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0"><i class="fas fa-calendar-plus me-2"></i>Agendar Nueva Cita</h3>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="citaForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <!-- Paciente -->
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold">Paciente</label>
+                        <select formControlName="pacienteId" class="form-select" [ngClass]="{ 'is-invalid': enviado && f['pacienteId'].errors }">
+                            <option value="">Seleccione un paciente...</option>
+                            <option *ngFor="let p of pacientes" [value]="p.id">{{ p.nombre }} {{ p.apellido }}</option>
+                        </select>
+                        <div *ngIf="enviado && f['pacienteId'].errors" class="invalid-feedback">
+                            Debe seleccionar un paciente.
+                        </div>
+                    </div>
+
+                    <!-- Odontólogo -->
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold">Odontólogo</label>
+                        <select formControlName="odontologoId" class="form-select" [ngClass]="{ 'is-invalid': enviado && f['odontologoId'].errors }">
+                            <option value="">Seleccione un especialista...</option>
+                            <option *ngFor="let o of odontologos" [value]="o.id">{{ o.nombre }} {{ o.apellido }}</option>
+                        </select>
+                        <div *ngIf="enviado && f['odontologoId'].errors" class="invalid-feedback">
+                            Debe seleccionar un odontólogo.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Fecha -->
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold">Fecha</label>
+                        <input type="date" formControlName="fecha" class="form-control" [ngClass]="{ 'is-invalid': enviado && f['fecha'].errors }">
+                        <div *ngIf="enviado && f['fecha'].errors" class="invalid-feedback">
+                            La fecha es obligatoria.
+                        </div>
+                    </div>
+
+                    <!-- Hora -->
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold">Hora</label>
+                        <input type="time" formControlName="hora" class="form-control" [ngClass]="{ 'is-invalid': enviado && f['hora'].errors }">
+                        <div *ngIf="enviado && f['hora'].errors" class="invalid-feedback">
+                            La hora es obligatoria.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Motivo -->
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Motivo de la consulta</label>
+                    <textarea formControlName="motivo" class="form-control" rows="2" placeholder="Ej: Limpieza dental, revisión general..." [ngClass]="{ 'is-invalid': enviado && f['motivo'].errors }"></textarea>
+                    <div *ngIf="enviado && f['motivo'].errors" class="invalid-feedback">
+                        El motivo es obligatorio.
+                    </div>
+                </div>
+
+                <!-- Observaciones -->
+                <div class="mb-4">
+                    <label class="form-label fw-bold">Observaciones adicionales (Opcional)</label>
+                    <textarea formControlName="observaciones" class="form-control" rows="2"></textarea>
+                </div>
+
+                <div class="d-flex justify-content-end gap-2">
+                    <button type="button" class="btn btn-outline-secondary" routerLink="/citas">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary px-4">
+                        Guardar Cita
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

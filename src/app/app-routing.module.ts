@@ -33,7 +33,12 @@ const routes: Routes = [
       {
         path: 'dentistas',
         loadChildren: () => import('./components/paginas/odontologos/dentistas.module').then(m => m.DentistasModule)
-      }]
+      },
+      {
+        path: 'citas',
+        loadChildren: () => import('./components/paginas/citas/citas.module').then(m => m.CitasModule)
+      }
+    ]
    },
   // Wildcard route (redirigir a login)
   { path: '**', redirectTo: '/login' }

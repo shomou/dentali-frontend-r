@@ -9,7 +9,7 @@ import { environment } from '../../../environment/environment';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = `${environment.apiUrl}/users`;
+  private apiUrl = `${environment.apiUrl}/auth`;
   private currentUserSubject: BehaviorSubject<AuthUser | null>;
   public currentUser$: Observable<AuthUser | null>;
 

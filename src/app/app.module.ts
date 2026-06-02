@@ -21,7 +21,8 @@ import { AuthModule } from './auth/auth.module';
     HeaderComponent,
     SidebarComponent,
     FooterComponent,
-    MainLayoutComponent
+    MainLayoutComponent,
+    
   ],
   imports: [
     BrowserModule,

@@ -19,9 +19,9 @@ export class PacientesListComponent implements OnInit{
     });
   }
 
-  eliminarPaciente(id: number): void {
-    this.pacientesService.eliminarPaciente(id).subscribe((pacientes) => {
-      this.pacientes = pacientes;
+  desactivarPaciente(id: number): void {
+    this.pacientesService.desactivarPaciente(id).subscribe((pacientes) => {
+      this.pacientes = this.pacientes.map(p => p.id === id ? pacientes : p);
     });
   } 
 

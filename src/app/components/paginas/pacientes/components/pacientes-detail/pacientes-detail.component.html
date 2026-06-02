@@ -6,7 +6,13 @@
         <h3>{{ paciente.nombre }} {{ paciente.apellido }}</h3>
         <p><strong>Correo:</strong>{{ paciente.email }}</p>
         <p><strong>Fecha de Nacimiento:</strong>{{ paciente.fechaNacimiento | date:'dd/MM/yyyy' }}</p>
+        <p><strong>Estado Sistema:</strong>{{ paciente.estado }}</p>
         <p><strong>Género:</strong>{{ paciente.genero }}</p>
+        <p><strong>Teléfono:</strong>{{ paciente.telefono }}</p>
+        <p><strong>Dirección:</strong>{{ paciente.direccion }}</p>
+        <p><strong>Identificación:</strong>{{ paciente.identificacion }}</p>
+        <p><strong>CURP:</strong>{{ paciente.curp }}</p>
+
 
         <div class="mt-3">
             <button class="btn btn-secondary" routerLink="/pacientes">Volver</button>

@@ -13,7 +13,7 @@ export class DentistasService {
   constructor(private http: HttpClient) {}
 
   obtenerDentistas(): Observable<Dentista[]> {
-    const endpoint  = '/list';
+    const endpoint  = '';
     return this.http.get<Dentista[]>(this.apiUrlDentistas+endpoint);
   }
 

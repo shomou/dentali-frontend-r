@@ -7,4 +7,7 @@ export interface Paciente {
   email: string;
   direccion: string;
   genero: 'Masculino' | 'Femenino' | 'Otro';
+  estado: 'Activo' | 'Inactivo' | 'Bloqueado';
+  identificacion: string;
+  curp: string; 
 }

@@ -26,7 +26,7 @@
                 <td>
                     <button class="btn btn-sm btn-primary" [routerLink]="['/pacientes', paciente.id]">Ver</button>
                     <button class="btn btn-sm btn-warning ml-1" [routerLink]="['/pacientes/editar', paciente.id]">Editar</button>
-                    <button class="btn btn-sm btn-danger ml-1" (click)="eliminarPaciente(paciente.id)">Eliminar</button>
+                    <button class="btn btn-sm btn-danger ml-1" (click)="desactivarPaciente(paciente.id)">Desactivar</button>
                 </td>
             </tr>
         </tbody>

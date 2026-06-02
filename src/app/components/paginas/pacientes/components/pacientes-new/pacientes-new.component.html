@@ -27,6 +27,22 @@
             </div>
         </div>
 
+         <div class="form-group">
+            <label>Identificación</label>
+            <input type="text" class="form-control" formControlName="identificacion">
+            <div *ngIf="f['identificacion'].invalid && (f['identificacion'].dirty || enviado)" class="text-danger">
+                Identificación es requerido.
+            </div>
+        </div>       
+
+         <div class="form-group">
+            <label>CURP</label>
+            <input type="text" class="form-control" formControlName="curp">
+            <div *ngIf="f['curp'].invalid && (f['curp'].dirty || enviado)" class="text-danger">
+                CURP es requerido.
+            </div>
+        </div>       
+
         <div class="form-group">
             <label>Teléfono</label>
             <input type="text" class="form-control" formControlName="telefono" />
@@ -55,8 +71,8 @@
             <label>Género</label>
             <select class="form-control" formControlName="genero">
                 <option value="">Seleccione</option>
-                <option value="Masculino">Masculino</option>
-                <option value="Femenino">Femenino</option>
+                <option value="MASCULINO">Masculino</option>
+                <option value="FEMENINO">Femenino</option>
                 <option value="Otro">Otro</option>
             </select>
             <div *ngIf="f['genero'].invalid && (f['genero'].dirty || enviado)" class="text-danger">

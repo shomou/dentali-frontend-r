@@ -28,7 +28,9 @@ export class PacientesNewComponent implements OnInit{
       telefono: ['', [Validators.required]],
       direccion: ['', [Validators.required]],
       fechaNacimiento: ['', [Validators.required]],
-      genero: ['', [Validators.required]]
+      genero: ['', [Validators.required]],
+      identificacion: ['',[Validators.required]],
+      curp: ['',[Validators.required]]
     });
   }
 
